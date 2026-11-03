@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CampusDesk | Student Management</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-mark">C</div>
+        <div><strong>CampusDesk</strong><span>STUDENT PORTAL</span></div>
+      </div>
+      <div class="nav-label">WORKSPACE</div>
+      <a class="nav-item active" href="#overview"><span>▦</span> Overview</a>
+      <a class="nav-item" href="#directory"><span>☷</span> Student directory</a>
+      <div class="sidebar-note">
+        <div class="note-icon">✦</div>
+        <strong>Simple. Organised.</strong>
+        <p>Manage student records from one place.</p>
+      </div>
+      <div class="sidebar-bottom"><span class="avatar">AP</span><div><strong>APP Project</strong><small>Academic workspace</small></div></div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <div><div class="eyebrow">ADVANCED PROGRAMMING PRACTICE</div><h1>Student Management</h1><p class="subtitle">A clear view of your student records.</p></div>
+        <div class="connection-pill" id="connection"><i></i><span>Checking database…</span></div>
+      </header>
+
+      <section class="stats-grid" id="overview">
+        <article class="stat-card">
+          <div class="stat-top"><span>Total students</span><span class="stat-icon blue">♙</span></div>
+          <div class="stat-number" id="totalStudents">—</div><div class="stat-foot">Registered records</div>
+        </article>
+        <article class="stat-card">
+          <div class="stat-top"><span>Departments</span><span class="stat-icon violet">▤</span></div>
+          <div class="stat-number" id="departmentCount">—</div><div class="stat-foot">Departments represented</div>
+        </article>
+        <article class="stat-card accent-card">
+          <div class="stat-top"><span>Database status</span><span class="pulse" id="statusPulse"></span></div>
+          <div class="status-word" id="databaseStatus">Checking</div><div class="stat-foot" id="statusDetail">Connecting to MySQL</div>
+        </article>
+      </section>
+
+      <section class="content-grid">
+        <article class="panel form-panel">
+          <div class="panel-heading"><div><div class="eyebrow">STUDENT DETAILS</div><h2 id="formTitle">Add a student</h2></div><span class="step-tag">FORM</span></div>
+          <form id="studentForm">
+            <label for="studentId">Student ID <b>*</b></label>
+            <input id="studentId" type="number" min="1" placeholder="e.g. 101" required>
+            <label for="studentName">Full name <b>*</b></label>
+            <input id="studentName" maxlength="100" placeholder="e.g. Rahul Sharma" required>
+            <label for="department">Department <b>*</b></label>
+            <select id="department" required>
+              <option value="">Select department</option>
+              <option>CSE</option><option>ECE</option><option>EEE</option>
+              <option>MECH</option><option>CIVIL</option><option>IT</option><option>Other</option>
+            </select>
+            <label for="email">Email address <b>*</b></label>
+            <input id="email" type="email" maxlength="120" placeholder="student@example.com" required>
+            <div class="form-actions">
+              <button class="btn btn-primary" id="saveButton" type="submit"><span>＋</span> Add student</button>
+              <button class="btn btn-light" id="cancelEdit" type="button" hidden>Cancel</button>
+            </div>
+            <p class="form-hint">Fields marked * are required.</p>
+          </form>
+        </article>
+
+        <article class="panel directory-panel" id="directory">
+          <div class="panel-heading directory-heading">
+            <div><div class="eyebrow">RECORDS</div><h2>Student directory</h2></div>
+            <button class="btn btn-light btn-refresh" id="refreshButton" type="button">↻ Refresh</button>
+          </div>
+          <div class="filters">
+            <div class="search-box"><span>⌕</span><input id="searchInput" placeholder="Search ID, name or email…"></div>
+            <select id="departmentFilter" aria-label="Filter by department">
+              <option value="">All departments</option>
+              <option>CSE</option><option>ECE</option><option>EEE</option>
+              <option>MECH</option><option>CIVIL</option><option>IT</option><option>Other</option>
+            </select>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>STUDENT</th><th>DEPARTMENT</th><th>EMAIL</th><th class="actions-head">ACTIONS</th></tr></thead>
+              <tbody id="studentRows"><tr><td colspan="4" class="empty-cell">Loading student records…</td></tr></tbody>
+            </table>
+          </div>
+          <div class="table-footer"><span id="recordCount">Loading…</span><span>Live database records</span></div>
+        </article>
+      </section>
+      <div class="toast" id="toast" role="status"></div>
+      <footer>CampusDesk <span>•</span> Built with Java, Spring Boot, JPA &amp; MySQL</footer>
+    </main>
+  </div>
+  <script src="/app.js"></script>
+</body>
+</html>
