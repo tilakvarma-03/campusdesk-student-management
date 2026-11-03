@@ -19,7 +19,6 @@ Browser (HTML/CSS/JavaScript) → REST API (Spring Boot Controller) → Spring D
 ## Requirements
 
 - JDK 17 or newer
-- Maven 3.6+ (or Maven support in VS Code)
 - MySQL Server 8.x
 
 ## 1. Create the database
